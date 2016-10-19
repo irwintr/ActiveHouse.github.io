@@ -5,9 +5,13 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 
 
 public class MainActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,9 +21,20 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
+        EditText etUsername = (EditText) findViewById(R.id.input_username);
+        EditText etPassword = (EditText) findViewById(R.id.input_password);
+        CheckBox cbSave = (CheckBox) findViewById(R.id.input_save);
 
-        //String highScore = sharedPref.getString("username", 0);
+        SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
+        String savedUsername = sharedPref.getString("username", "");
+        String savedPassword = sharedPref.getString("password", "");
+        if (!savedUsername.equals("") && !savedPassword.equals("")) {
+            etUsername.setText(savedUsername);
+            etPassword.setText(savedPassword);
+            cbSave.setChecked(true);
+        }
+
+
 
     }
 
@@ -28,6 +43,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("username", "Trent");
         editor.putString("password", "Password");
-        editor.commit();
+        editor.apply(); 
     }
 }
