@@ -16,4 +16,8 @@
     <string name="home">Home</string>
     <string name="statistics">Statistics</string>
     <string name="allLightsOff">All Lights Turned Off</string>
+    <string name="logout">Logout</string>
+    <string name="title_activity_settings">Settings</string>
+
+
 </resources>
