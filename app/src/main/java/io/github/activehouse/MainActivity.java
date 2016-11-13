@@ -82,10 +82,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void loginButtonClick(View view) {
-
-
-    }
-
 
 }

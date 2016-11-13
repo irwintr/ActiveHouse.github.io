@@ -32,7 +32,7 @@ public class House {
         return new Room();
     }
 
-    
+
 
     public ArrayList<Room> getRooms() {
         return rooms;
