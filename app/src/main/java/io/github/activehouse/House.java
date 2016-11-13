@@ -23,6 +23,17 @@ public class House {
 
     //Getters and Setters
 
+    public Room getRoom(int roomID) {
+        for (int i = 0; i < rooms.size(); i++) {
+            if (rooms.get(i).getRoomID() == roomID) {
+                return rooms.get(i);
+            }
+        }
+        return new Room();
+    }
+
+    
+
     public ArrayList<Room> getRooms() {
         return rooms;
     }
