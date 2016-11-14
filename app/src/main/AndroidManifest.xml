@@ -25,4 +25,6 @@
         <activity android:name=".RoomActivity" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>
