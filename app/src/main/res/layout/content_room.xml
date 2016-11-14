@@ -2,13 +2,13 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
-android:layout_height="fill_parent"
-android:fitsSystemWindows="true"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/content_home"
-tools:context="io.github.activehouse.HomeActivity"
-tools:showIn="@layout/app_bar_home"
-android:background="@color/colorTextDark"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_room"
+    tools:context="io.github.activehouse.RoomActivity"
+    tools:showIn="@layout/app_bar_room"
+    android:background="@color/colorTextDark"
     android:paddingTop="@dimen/activity_vertical_margin">
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -152,14 +152,14 @@ android:background="@color/colorTextDark"
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:srcCompat="@drawable/power_plug"
+                        app:srcCompat="@drawable/brightness_6"
                         android:id="@+id/imageView4"
                         android:layout_weight="4"
                         android:minHeight="70dip"
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="32kWh"
+                        android:text="156lx"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewPowerToday"
@@ -171,7 +171,7 @@ android:background="@color/colorTextDark"
                 </LinearLayout>
 
                 <TextView
-                    android:text="Today's Power Usage"
+                    android:text="Brightness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView3"
@@ -199,26 +199,26 @@ android:background="@color/colorTextDark"
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:srcCompat="@drawable/power_plug"
+                        app:srcCompat="@drawable/fire"
                         android:id="@+id/imageView3"
                         android:layout_weight="4"
                         android:minHeight="70dip"
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="54kWh"
+                        android:text="Negative"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewPowerAverage"
                         android:layout_weight="2"
-                        android:textSize="32sp"
+                        android:textSize="28sp"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
                         android:gravity="center_vertical" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Average Power Usage"
+                    android:text="Gas Alert"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView5"
@@ -258,14 +258,14 @@ android:background="@color/colorTextDark"
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:srcCompat="@drawable/water_pump"
+                        app:srcCompat="@drawable/lightbulb"
                         android:id="@+id/imageView5"
                         android:layout_weight="4"
                         android:minHeight="70dip"
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="104L"
+                        android:text="On"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewWaterToday"
@@ -277,7 +277,7 @@ android:background="@color/colorTextDark"
                 </LinearLayout>
 
                 <TextView
-                    android:text="Today's Water Usage"
+                    android:text="Light Status Toggle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView6"
@@ -305,14 +305,14 @@ android:background="@color/colorTextDark"
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:srcCompat="@drawable/water_pump"
+                        app:srcCompat="@drawable/calendar_clock"
                         android:id="@+id/imageView6"
                         android:layout_weight="4"
                         android:minHeight="70dip"
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="166L"
+                        android:text="On"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewWaterAverage"
@@ -324,7 +324,7 @@ android:background="@color/colorTextDark"
                 </LinearLayout>
 
                 <TextView
-                    android:text="Average Water Usage"
+                    android:text="Light Schedule Toggle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView7"
@@ -366,26 +366,26 @@ android:background="@color/colorTextDark"
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:srcCompat="@drawable/lightbulb"
+                        app:srcCompat="@drawable/lightbulb_outline"
                         android:id="@+id/imageView7"
                         android:layout_weight="4"
                         android:minHeight="70dip"
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="3"
+                        android:text="12:30am"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewLights"
                         android:layout_weight="2"
-                        android:textSize="48sp"
+                        android:textSize="26sp"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
                         android:gravity="center_vertical" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Number of Lights On"
+                    android:text="Lights Time On"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView8"
@@ -410,60 +410,29 @@ android:background="@color/colorTextDark"
                     android:layout_marginTop="5dip">
 
 
-                    <LinearLayout
-                        android:orientation="vertical"
+                    <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:clickable="true"
-                        android:id="@+id/linearLayoutOn">
+                        android:id="@+id/imageView8"
+                        android:layout_weight="4"
+                        android:minHeight="70dip"
+                        android:tint="@color/colorTextDark"
+                        app:srcCompat="@drawable/lightbulb" />
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            app:srcCompat="@drawable/lightbulb_outline"
-                            android:id="@+id/imageView9"
-                            android:layout_weight="4"
-                            android:minHeight="71dp"
-                            android:tint="@color/colorTextDark" />
-                        <TextView
-                            android:text="On"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/textView4"
-                            android:textAlignment="center"
-                            android:textColor="@color/colorTextDark"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="vertical"
+                    <TextView
+                        android:text="12:56pm"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:clickable="true"
-                        android:id="@+id/linearLayoutOff">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            app:srcCompat="@drawable/lightbulb"
-                            android:id="@+id/imageView8"
-                            android:layout_weight="4"
-                            android:minHeight="71dp"
-                            android:tint="@color/colorTextDark" />
-                        <TextView
-                            android:text="Off"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/textView"
-                            android:textAlignment="center"
-                            android:textColor="@color/colorTextDark"/>
-                    </LinearLayout>
-
+                        android:id="@+id/textViewLightsOff"
+                        android:layout_weight="2"
+                        android:textSize="26sp"
+                        android:paddingTop="5dip"
+                        android:textColor="@color/colorTextDark"
+                        android:gravity="center_vertical" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Toggle All Lights"
+                    android:text="Lights Time Off"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView9"
@@ -482,3 +451,4 @@ android:background="@color/colorTextDark"
 
 
 </ScrollView>
+

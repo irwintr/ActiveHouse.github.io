@@ -5,7 +5,7 @@
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_room"
-    tools:context="io.github.activehouse.RoomActivity">
+    tools:context="io.github.activehouse.RoomViewActivity">
 
     <!-- Main ListView
          Always give id value as list(@android:id/list)

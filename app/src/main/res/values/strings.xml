@@ -18,6 +18,8 @@
     <string name="allLightsOff">All Lights Turned Off</string>
     <string name="logout">Logout</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="allLightsOn">All Lights have been turned on</string>
+    <string name="title_activity_room">RoomActivity</string>
 
 
 </resources>
