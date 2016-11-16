@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                //intent.putExtra("SomeStringData", "");
+                intent.putExtra("HouseID", "1");
 
                 startActivity(intent);
                 finish();
@@ -80,11 +80,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    public void loginButtonClick(View view) {
-
-
     }
 
 
