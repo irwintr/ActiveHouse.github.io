@@ -1,3 +1,6 @@
+//Active Applications
+//Active House Project
+
 package io.github.activehouse;
 
 import android.content.Intent;
