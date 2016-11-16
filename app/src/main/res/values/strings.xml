@@ -2,7 +2,6 @@
     <string name="app_name">ActiveHouse</string>
     <string name="server_address_get_rooms">http://munro.humber.ca/~n01046059/ActiveHouse/get_rooms.php</string>
     <string name="server_address_login">http://munro.humber.ca/~n01046059/ActiveHouse/login.php</string>
-    <string name="server_address_get_room">http://munro.humber.ca/~n01046059/ActiveHouse/get_room.php</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
@@ -28,6 +27,10 @@
     <string name="positive">Positive</string>
     <string name="negative">Negative</string>
     <string name="view_all_rooms">View All Rooms</string>
+    <string name="responseLog">"Response from url: "</string>
+    <string name="jsonError">"Json parsing error: "</string>
+    <string name="jsonError2">Couldn\'t get json from server.</string>
+    <string name="jsonError3">Couldn\'t get json from server. Check LogCat for possible errors!</string>
 
 
 </resources>

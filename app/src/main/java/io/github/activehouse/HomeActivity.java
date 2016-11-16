@@ -138,9 +138,9 @@ public class HomeActivity extends AppCompatActivity
 
             startActivity(intent);
 
-        } else if (id == R.id.nav_stats) {
+        //} else if (id == R.id.nav_stats) {
 
-        } else if (id == R.id.nav_settings) {
+        //} else if (id == R.id.nav_settings) {
 
         } else {
             startActivity(item.getIntent());
@@ -167,7 +167,7 @@ public class HomeActivity extends AppCompatActivity
             String url = "http://munro.humber.ca/~n01046059/ActiveHouse/get_rooms.php?houseid=" + myhouse.getHouseID();
             String jsonStr = sh.makeServiceCall(url);
 
-            Log.e(TAG, "Response from url: " + jsonStr);
+            Log.e(TAG, getString(R.string.responseLog) + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
@@ -226,12 +226,12 @@ public class HomeActivity extends AppCompatActivity
                     myhouse.setWaterAverage(h.getDouble("WATER_AVERAGE"));
 
                 } catch (final JSONException e) {
-                    Log.e(TAG, "Json parsing error: " + e.getMessage());
+                    Log.e(TAG, getString(R.string.jsonError) + e.getMessage());
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText(getApplicationContext(),
-                                    "Json parsing error: " + e.getMessage(),
+                                    getString(R.string.jsonError) + e.getMessage(),
                                     Toast.LENGTH_LONG).show();
                         }
                     });
@@ -239,12 +239,12 @@ public class HomeActivity extends AppCompatActivity
                 }
 
             } else {
-                Log.e(TAG, "Couldn't get json from server.");
+                Log.e(TAG, getString(R.string.jsonError2));
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         Toast.makeText(getApplicationContext(),
-                                "Couldn't get json from server. Check LogCat for possible errors!",
+                                R.string.jsonError3,
                                 Toast.LENGTH_LONG).show();
                     }
                 });

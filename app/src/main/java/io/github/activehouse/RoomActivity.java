@@ -91,7 +91,7 @@ public class RoomActivity extends AppCompatActivity
 
         Temp.setText(String.valueOf(HomeActivity.myhouse.getRoom(RoomID).getTemp()) + "°c");
         Humidity.setText(String.valueOf(HomeActivity.myhouse.getRoom(RoomID).getHumidity()) + "%");
-        Brightness.setText(String.valueOf(HomeActivity.myhouse.getRoom(RoomID).getLuminosity()) + "lx");
+        Brightness.setText(String.valueOf((int) HomeActivity.myhouse.getRoom(RoomID).getLuminosity()) + "lx");
         if (HomeActivity.myhouse.getRoom(RoomID).getGas()) {
             Gas.setText(R.string.positive);
         }
@@ -147,7 +147,7 @@ public class RoomActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            finish();
+            super.finish();
             return true;
         }
 
@@ -161,12 +161,18 @@ public class RoomActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
+            Intent intent = new Intent(RoomActivity.this, HomeActivity.class);
+            //intent.putExtra("SomeStringData", "");
 
+            startActivity(intent);
         } else if (id == R.id.nav_viewRooms) {
+            Intent intent = new Intent(RoomActivity.this, RoomViewActivity.class);
+            //intent.putExtra("SomeStringData", "");
 
-        } else if (id == R.id.nav_stats) {
+            startActivity(intent);
+       // } else if (id == R.id.nav_stats) {
 
-        } else if (id == R.id.nav_settings) {
+        //} else if (id == R.id.nav_settings) {
 
         }  else {
             startActivity(item.getIntent());
