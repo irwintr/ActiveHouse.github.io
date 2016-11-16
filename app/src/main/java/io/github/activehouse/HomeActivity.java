@@ -29,8 +29,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 
 
 public class HomeActivity extends AppCompatActivity
@@ -38,11 +36,10 @@ public class HomeActivity extends AppCompatActivity
 
     private String TAG = MainActivity.class.getSimpleName();
     NavigationView navigationView;
-    private ListView lv;
 
-    public House myhouse;
 
-    //ArrayList<HashMap<String, String>> contactList;
+    public static House myhouse;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +48,7 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, R.string.allLightsOff,  Toast.LENGTH_LONG).show();
-            }
-        });*/
+
         LinearLayout LightsOn = (LinearLayout) findViewById(R.id.linearLayoutOn);
         LightsOn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,11 +77,9 @@ public class HomeActivity extends AppCompatActivity
 
         //DB Code
 
-        //int HouseID = 1;
-        Intent intent = getIntent();
-        int HouseID = Integer.parseInt(intent.getStringExtra("HouseID"));
+
         myhouse = new House();
-        myhouse.setHouseID(HouseID);
+        myhouse.setHouseID(MainActivity.HouseID);
         //lv = (ListView) findViewById(R.id.list);
 
         new GetHouse().execute();
@@ -128,6 +117,7 @@ public class HomeActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
+            finish();
             return true;
         }
 
@@ -185,7 +175,7 @@ public class HomeActivity extends AppCompatActivity
                     // Getting JSON Array node
                     JSONArray rooms = jsonObj.getJSONArray("rooms");
 
-                    // looping through All Contacts
+                    // looping through All rooms
                     for (int i = 0; i < rooms.length(); i++) {
                         JSONObject c = rooms.getJSONObject(i);
 
@@ -225,6 +215,16 @@ public class HomeActivity extends AppCompatActivity
 
 
                     }
+
+                    JSONArray house = jsonObj.getJSONArray("house");
+                    JSONObject h = house.getJSONObject(0);
+                    myhouse.setHouseName(h.getString("HOUSE_NAME"));
+                    myhouse.setHouseID(h.getInt("HOUSE_ID"));
+                    myhouse.setPowerCurrent(h.getDouble("POWER_USAGE"));
+                    myhouse.setPowerAverage(h.getDouble("POWER_AVERAGE"));
+                    myhouse.setWaterCurrent(h.getDouble("WATER_USAGE"));
+                    myhouse.setWaterAverage(h.getDouble("WATER_AVERAGE"));
+
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
                     runOnUiThread(new Runnable() {
@@ -267,13 +267,16 @@ public class HomeActivity extends AppCompatActivity
 
             Temp.setText(String.valueOf(myhouse.getAverageTemp()) + "°c");
             Humidity.setText(String.valueOf(myhouse.getAverageHumidity()) + "%");
-            PowerToday.setText(String.valueOf(myhouse.getPowerCurrent()) + "kWh");
-            PowerAverage.setText(String.valueOf(myhouse.getPowerAverage()) + "kWh");
-            WaterToday.setText(String.valueOf(myhouse.getWaterCurrent()) + "L");
-            WaterAverage.setText(String.valueOf(myhouse.getWaterAverage()) + "L");
+            PowerToday.setText(String.valueOf((int) myhouse.getPowerCurrent()) + "kWh");
+            PowerAverage.setText(String.valueOf((int) myhouse.getPowerAverage()) + "kWh");
+            WaterToday.setText(String.valueOf((int) myhouse.getWaterCurrent()) + "L");
+            WaterAverage.setText(String.valueOf((int) myhouse.getWaterAverage()) + "L");
             Lights.setText(String.valueOf(myhouse.getLightsOn()));
 
-            //navigationView.getMenu().addIntentOptions("Rooms");
+            TextView housename = (TextView) findViewById(R.id.tvHouseName);
+            housename.setText(myhouse.getHouseName());
+            TextView usern = (TextView) findViewById(R.id.textViewUser);
+            usern.setText("User: " + MainActivity.FirstName);
 
 
             for (int i = 0; i < myhouse.getRooms().size(); i++) {
