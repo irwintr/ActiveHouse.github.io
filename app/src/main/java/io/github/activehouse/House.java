@@ -18,7 +18,13 @@ public class House {
         this.powerAverage = powerAverage;
     }
     public House() {
-
+        this.rooms = new ArrayList<Room>();
+        this.houseID = 0;
+        this.houseName = "";
+        this.waterCurrent = 0;
+        this.waterAverage = 0;
+        this.powerCurrent = 0;
+        this.powerAverage = 0;
     }
 
     //Getters and Setters
@@ -30,6 +36,49 @@ public class House {
             }
         }
         return new Room();
+    }
+
+    public void addRoom(Room newRoom) {
+        rooms.add(newRoom);
+    }
+
+    public double getAverageTemp() {
+        double temp = 0;
+        for (int i = 0; i < rooms.size(); i++) {
+            temp = temp + rooms.get(i).getTemp();
+        }
+        temp = temp / rooms.size();
+        temp = round(temp, 1);
+        return temp;
+    }
+
+    public double getAverageHumidity() {
+        double humidity = 0;
+        for (int i = 0; i < rooms.size(); i++) {
+            humidity = humidity + rooms.get(i).getHumidity();
+        }
+        humidity = humidity / rooms.size();
+        humidity = round(humidity, 1);
+        return humidity;
+    }
+
+    public int getLightsOn() {
+        int lights = 0;
+        for (int i = 0; i < rooms.size(); i++) {
+            if (rooms.get(i).isLightStatus()) {
+                lights++;
+            }
+        }
+        return lights;
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 
 

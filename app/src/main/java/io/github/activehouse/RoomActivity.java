@@ -33,6 +33,8 @@ public class RoomActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override
@@ -81,13 +83,13 @@ public class RoomActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_settings) {
 
-        } else if (id == R.id.nav_MBedroom) {
+        } /*else if (id == R.id.nav_1) {
 
-        } else if (id == R.id.nav_Kitchen) {
+        } else if (id == R.id.nav_2) {
 
-        } else if (id == R.id.nav_LivingRoom) {
+        } else if (id == R.id.nav_3) {
 
-        }
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

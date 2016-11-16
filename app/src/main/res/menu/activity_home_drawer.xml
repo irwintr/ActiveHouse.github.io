@@ -20,20 +20,14 @@
             android:title="@string/settings" />
     </group>
 
-    <item android:title="@string/rooms">
+    <item android:title="@string/rooms"
+        android:visible="true">
         <menu>
             <item
-                android:id="@+id/nav_MBedroom"
-                android:icon="@drawable/ic_hotel_black_48dp"
-                android:title="Master Bedroom" />
-            <item
-                android:id="@+id/nav_Kitchen"
-                android:icon="@drawable/ic_kitchen_black_48dp"
-                android:title="Kitchen" />
-            <item
-                android:id="@+id/nav_LivingRoom"
-                android:icon="@drawable/ic_weekend_black_48dp"
-                android:title="Living Room" />
+                android:id="@+id/nav_1"
+
+                android:title="" />
+
         </menu>
     </item>
 
