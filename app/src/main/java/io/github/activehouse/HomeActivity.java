@@ -152,17 +152,9 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_settings) {
 
-        } /*else if (id == R.id.nav_1) {
-            Intent intent = new Intent(HomeActivity.this, RoomActivity.class);
-            intent.putExtra("ROOMID", "");
-
-            startActivity(intent);
-
-        } else if (id == R.id.nav_2) {
-
-        } else if (id == R.id.nav_3) {
-
-        }*/
+        } else {
+            startActivity(item.getIntent());
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -283,23 +275,22 @@ public class HomeActivity extends AppCompatActivity
 
             //navigationView.getMenu().addIntentOptions("Rooms");
 
-            String name = myhouse.getRooms().get(0).getName();
-            MenuItem item = navigationView.getMenu().findItem(R.id.nav_1);
-            item.setTitle(name);
-            if(name.toLowerCase().contains("kitchen")) {
-                item.setIcon(R.drawable.ic_kitchen_black_48dp);
-            }
-            else if (name.toLowerCase().contains("bedroom")) {
-                item.setIcon(R.drawable.ic_hotel_black_48dp);
-            }
-            else if (name.toLowerCase().contains("living")) {
-                item.setIcon(R.drawable.ic_weekend_black_48dp);
-            }
 
-            for (int i = 1; i < myhouse.getRooms().size(); i++) {
+            for (int i = 0; i < myhouse.getRooms().size(); i++) {
+                String name = myhouse.getRooms().get(i).getName();
+                MenuItem item;
+                if(i == 0) {
+                    item = navigationView.getMenu().findItem(R.id.nav_1);
+                    item.setTitle(name);
+                }
+                else {
+                    item = navigationView.getMenu().add(name);
+                }
+                Intent intent = new Intent(HomeActivity.this, RoomActivity.class);
+                intent.putExtra("ROOMID", myhouse.getRooms().get(i).getRoomID());
+                item.setIntent(intent);
 
-                name = myhouse.getRooms().get(i).getName();
-                item = navigationView.getMenu().add(name);
+
                 if(name.toLowerCase().contains("kitchen")) {
                     item.setIcon(R.drawable.ic_kitchen_black_48dp);
                 }
