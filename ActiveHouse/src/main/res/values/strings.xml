@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ActiveHouse</string>
+    <string name="app_name">Active House</string>
     <string name="server_address_get_rooms">http://munro.humber.ca/~n01046059/ActiveHouse/get_rooms.php</string>
     <string name="server_address_login">http://munro.humber.ca/~n01046059/ActiveHouse/login.php</string>
     <string name="login">Login</string>

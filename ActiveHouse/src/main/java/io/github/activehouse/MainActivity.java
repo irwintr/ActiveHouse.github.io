@@ -23,6 +23,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigInteger;
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,34 +72,36 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
+                if (etPassword.getText().length() > 0 && etUsername.getText().length() > 0) {
 
-                //attempt login
-                username = etUsername.getText().toString();
-                password = etPassword.getText().toString();
-                new GetLogin().execute();
+                    //attempt login
+                    username = etUsername.getText().toString();
+                    password = etPassword.getText().toString();
+                    new GetLogin().execute();
 
 
-                if (cbSave.isChecked()) {
-                    SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("username", etUsername.getText().toString());
-                    editor.putString("password", etPassword.getText().toString());
-                    editor.apply();
+                    if (cbSave.isChecked()) {
+                        SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString("username", etUsername.getText().toString());
+                        editor.putString("password", etPassword.getText().toString());
+                        editor.apply();
 
+
+                    }
+                    else {
+                        SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString("username", "");
+                        editor.putString("password", "");
+                        editor.apply();
+                    }
 
                 }
                 else {
-                    SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("username", "");
-                    editor.putString("password", "");
-                    editor.apply();
+                    Toast.makeText(MainActivity.this,"Error Logging in, please enter Username and Password",Toast.LENGTH_SHORT).show();
+
                 }
-
-
-
-
-
 
             }
         });
@@ -111,8 +118,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
+
+            String hashedPW = md5(password);
             // Making a request to url and getting response
-            String url = "http://munro.humber.ca/~n01046059/ActiveHouse/login.php?username=" + username + "&password=" + password;
+            String url = "http://munro.humber.ca/~n01046059/ActiveHouse/login.php?username=" + username + "&password=" + hashedPW;
             String jsonStr = sh.makeServiceCall(url);
 
             Log.e(TAG, "Response from url: " + jsonStr);
@@ -138,7 +147,12 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     else {
-                        Toast.makeText(MainActivity.this,"Error Logging in, check Username and Password",Toast.LENGTH_SHORT).show();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "Error Logging in, check Username and Password",Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
 
 
@@ -187,6 +201,26 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+    }
+
+
+    public static String md5(String s)
+    {
+        MessageDigest digest;
+        try
+        {
+            digest = MessageDigest.getInstance("MD5");
+            digest.update(s.getBytes(Charset.forName("US-ASCII")),0,s.length());
+            byte[] magnitude = digest.digest();
+            BigInteger bi = new BigInteger(1, magnitude);
+            String hash = String.format("%0" + (magnitude.length << 1) + "x", bi);
+            return hash;
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        return "";
     }
 
 

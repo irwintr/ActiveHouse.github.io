@@ -3,7 +3,7 @@
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:fitsSystemWindows="true"
-    android:background="@color/colorBG">
+    android:background="@color/colorTextDark">
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -60,7 +60,10 @@ android:fitsSystemWindows="true"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         android:padding="12dp"
-        android:text="@string/login" />
+        android:text="@string/login"
+        android:background="@drawable/side_nav_bar"
+        android:textSize="18sp"
+        android:textColor="@color/colorTextDark" />
 
 </LinearLayout>
 </ScrollView>
