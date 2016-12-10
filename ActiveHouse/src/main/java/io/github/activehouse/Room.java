@@ -3,11 +3,21 @@
 
 package io.github.activehouse;
 
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Room {
     private String name, timeOn, timeOff, timeUpdated;
     private int roomID;
     private boolean lightStatus, lightSchedule, gas;
     private double temp, humidity, luminosity;
+
 
     public Room(String name, String timeOn, String timeOff, String timeUpdated, int roomID, boolean gas, boolean lightStatus, boolean lightSchedule, double temp, double humidity, double luminosity) {
         this.name = name;
@@ -25,6 +35,99 @@ public class Room {
 
     public Room() {
 
+    }
+
+    public void updateRoom() {
+        new UpdateRoom().execute();
+    }
+
+    public class UpdateRoom extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //Toast.makeText(HomeActivity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            HttpHandler sh = new HttpHandler();
+
+            String schedule, status;
+            if (lightSchedule) {
+                schedule = "1";
+            }
+            else {
+                schedule = "0";
+            }
+            if (lightStatus) {
+                status = "1";
+            }
+            else {
+                status = "0";
+            }
+
+            // Making a request to url and getting response
+            String url = "http://munro.humber.ca/~n01046059/ActiveHouse/update_room.php?ROOM_ID=" + roomID + "&LIGHT_STATUS=" + status
+                    + "&LIGHT_SCHEDULE=" + schedule + "&LIGHT_TIME_ON=" + timeOn + "&LIGHT_TIME_OFF=" + timeOff;
+            String jsonStr = sh.makeServiceCall(url);
+
+            Log.e(Room.class.getSimpleName(), "Response from url: " + jsonStr);
+            if (jsonStr != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(jsonStr);
+                    int success = jsonObj.getInt("success");
+                    if (success == 1) {
+                        // Getting JSON Array node
+
+                        Log.e(Room.class.getSimpleName(), "Room successfully updated");
+
+
+                    }
+                    else {
+                        /*runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "Error Logging in, check Username and Password",Toast.LENGTH_LONG).show();
+                            }
+                        });*/
+                    }
+
+                } catch (final JSONException e) {
+                    Log.e(Room.class.getSimpleName(), "Json parsing error: " + e.getMessage());
+                    /*runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),
+                                    "Json parsing error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });*/
+
+                }
+
+            } else {
+                Log.e(Room.class.getSimpleName(), "Couldn't get json from server.");
+                /*runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),
+                                "Couldn't get json from server. Check LogCat for possible errors!",
+                                Toast.LENGTH_LONG).show();
+                    }
+                });*/
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+
+
+
+        }
     }
 
 

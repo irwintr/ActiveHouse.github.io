@@ -31,6 +31,10 @@
     <string name="jsonError">"Json parsing error: "</string>
     <string name="jsonError2">Couldn\'t get json from server.</string>
     <string name="jsonError3">Couldn\'t get json from server. Check LogCat for possible errors!</string>
+    <string name="lightOn">Light On</string>
+    <string name="lightScheduleOn">Light Schedule Turned On</string>
+    <string name="lightScheduleOff">Light Schedule Turned Off</string>
+    <string name="lightOff">Light turned off</string>
 
 
 </resources>

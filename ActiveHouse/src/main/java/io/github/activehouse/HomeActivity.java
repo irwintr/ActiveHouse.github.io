@@ -56,6 +56,10 @@ public class HomeActivity extends AppCompatActivity
         LightsOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                for(int i = 0; i < myhouse.getRooms().size(); i++) {
+                    myhouse.getRooms().get(i).setLightStatus(true);
+                    myhouse.getRooms().get(i).updateRoom();
+                }
                 Toast.makeText(HomeActivity.this, R.string.allLightsOn,  Toast.LENGTH_SHORT).show();
             }
         });
@@ -64,6 +68,10 @@ public class HomeActivity extends AppCompatActivity
         LightsOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                for(int i = 0; i < myhouse.getRooms().size(); i++) {
+                    myhouse.getRooms().get(i).setLightStatus(false);
+                    myhouse.getRooms().get(i).updateRoom();
+                }
                 Toast.makeText(HomeActivity.this, R.string.allLightsOff,  Toast.LENGTH_SHORT).show();
             }
         });

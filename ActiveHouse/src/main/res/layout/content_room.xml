@@ -240,7 +240,7 @@
 
             <LinearLayout
                 android:background="@drawable/layout_bg"
-                android:id="@+id/linearLayout5"
+                android:id="@+id/lightStatusToggle"
                 android:orientation="vertical"
                 android:layout_weight="1"
                 android:layout_height="100dip"
@@ -287,7 +287,7 @@
 
             <LinearLayout
                 android:background="@drawable/layout_bg"
-                android:id="@+id/linearLayout6"
+                android:id="@+id/lightScheduleToggle"
                 android:orientation="vertical"
                 android:layout_weight="1"
                 android:layout_height="100dip"

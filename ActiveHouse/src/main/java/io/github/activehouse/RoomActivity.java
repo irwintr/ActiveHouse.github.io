@@ -16,13 +16,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RoomActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     int RoomID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +85,52 @@ public class RoomActivity extends AppCompatActivity
         RoomID = i.getIntExtra("ROOMID", 0);
         getSupportActionBar().setTitle(HomeActivity.myhouse.getRoom(RoomID).getName());
 
+        updateLayout();
 
+
+
+        LinearLayout lightStatus = (LinearLayout) findViewById(R.id.lightStatusToggle);
+        lightStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (HomeActivity.myhouse.getRoom(RoomID).isLightStatus()) {
+                    HomeActivity.myhouse.getRoom(RoomID).setLightStatus(false);
+                    Toast.makeText(RoomActivity.this, R.string.lightOff,  Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    HomeActivity.myhouse.getRoom(RoomID).setLightStatus(true);
+                    Toast.makeText(RoomActivity.this, R.string.lightOn,  Toast.LENGTH_SHORT).show();
+                }
+                HomeActivity.myhouse.getRoom(RoomID).updateRoom();
+                updateLayout();
+
+            }
+        });
+
+        LinearLayout lightSchedule = (LinearLayout) findViewById(R.id.lightScheduleToggle);
+        lightSchedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (HomeActivity.myhouse.getRoom(RoomID).isLightSchedule()) {
+                    HomeActivity.myhouse.getRoom(RoomID).setLightSchedule(false);
+                    Toast.makeText(RoomActivity.this, R.string.lightScheduleOff,  Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    HomeActivity.myhouse.getRoom(RoomID).setLightSchedule(true);
+                    Toast.makeText(RoomActivity.this, R.string.lightScheduleOn,  Toast.LENGTH_SHORT).show();
+                }
+                HomeActivity.myhouse.getRoom(RoomID).updateRoom();
+                updateLayout();
+
+
+            }
+        });
+
+
+
+    }
+
+    public void updateLayout() {
         TextView Temp = (TextView) findViewById(R.id.textViewTemp);
         TextView Humidity = (TextView) findViewById(R.id.textViewHumidity);
         TextView Brightness = (TextView) findViewById(R.id.textViewBrightness);
@@ -115,13 +163,6 @@ public class RoomActivity extends AppCompatActivity
             TableRow tbr = (TableRow) findViewById(R.id.tableRow4);
             tbr.setVisibility(View.GONE);
         }
-
-        //WaterToday.setText(String.valueOf(HomeActivity.myhouse.getWaterCurrent()) + "L");
-        //WaterAverage.setText(String.valueOf(HomeActivity.myhouse.getWaterAverage()) + "L");
-        //Lights.setText(String.valueOf(HomeActivity.myhouse.getLightsOn()));
-
-
-
     }
 
     @Override
