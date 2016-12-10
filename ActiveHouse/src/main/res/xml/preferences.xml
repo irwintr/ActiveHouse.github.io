@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        <EditTextPreference android:title="House Name"
+        android:key="Housename"
+        android:summary="Provide a name for your house"></EditTextPreference>
+    <SwitchPreference android:title="Temperature"
+        android:defaultValue="false"
+        android:summaryOn="Use this option to display in Fahrenheit"
+        android:summaryOff="Use this option to display in Celsius"
+        android:key="temperature" />
+    <SwitchPreference android:title="WaterCurrent"
+        android:defaultValue="false"
+        android:summaryOff="Use this option to display in liters"
+        android:summaryOn="Use this option to display in gallons"
+        android:key="wateruse" />
+
+</PreferenceScreen>

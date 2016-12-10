@@ -151,7 +151,9 @@ public class HomeActivity extends AppCompatActivity
 
         //} else if (id == R.id.nav_stats) {
 
-        //} else if (id == R.id.nav_settings) {
+        } else if (id == R.id.nav_settings) {
+            Intent i = new Intent(this, MyPreferencesActivity.class);
+            startActivity(i);
 
         } else {
             startActivity(item.getIntent());
