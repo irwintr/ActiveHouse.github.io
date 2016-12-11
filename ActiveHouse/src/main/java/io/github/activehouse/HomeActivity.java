@@ -95,6 +95,10 @@ public class HomeActivity extends AppCompatActivity
 
         new GetHouse().execute();
 
+        Intent intent = new Intent(this, GasService.class);
+        intent.putExtra("HouseID", MainActivity.HouseID);
+        startService(intent);
+
 
 
 
@@ -163,7 +167,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
 
-    private class GetHouse extends AsyncTask<Void, Void, Void> {
+    public class GetHouse extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
