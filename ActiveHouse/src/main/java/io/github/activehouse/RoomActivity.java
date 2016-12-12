@@ -4,7 +4,9 @@
 package io.github.activehouse;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -33,8 +35,7 @@ public class RoomActivity extends AppCompatActivity
         setContentView(R.layout.activity_room);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
+        loadPreferences();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -131,6 +132,7 @@ public class RoomActivity extends AppCompatActivity
     }
 
     public void updateLayout() {
+        loadPreferences();
         TextView Temp = (TextView) findViewById(R.id.textViewTemp);
         TextView Humidity = (TextView) findViewById(R.id.textViewHumidity);
         TextView Brightness = (TextView) findViewById(R.id.textViewBrightness);
@@ -139,7 +141,6 @@ public class RoomActivity extends AppCompatActivity
         TextView LightSchedule = (TextView) findViewById(R.id.textViewLightSchedule);
         TextView On = (TextView) findViewById(R.id.textViewLights);
         TextView Off = (TextView) findViewById(R.id.textViewLights);
-
         Temp.setText(String.valueOf(HomeActivity.myhouse.getRoom(RoomID).getTemp()) + "°c");
         Humidity.setText(String.valueOf(HomeActivity.myhouse.getRoom(RoomID).getHumidity()) + "%");
         Brightness.setText(String.valueOf((int) HomeActivity.myhouse.getRoom(RoomID).getLuminosity()) + "lx");
@@ -225,5 +226,10 @@ public class RoomActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void loadPreferences() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        boolean tempCheck = sharedPreferences.getBoolean("temperature", false);
     }
 }

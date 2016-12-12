@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-        <EditTextPreference android:title="House Name"
+    <EditTextPreference android:title="House Name"
         android:key="Housename"
         android:summary="Provide a name for your house"></EditTextPreference>
     <SwitchPreference android:title="Temperature"

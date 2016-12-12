@@ -4,6 +4,7 @@
 package io.github.activehouse;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -28,10 +29,14 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 
 
 public class HomeActivity extends AppCompatActivity
@@ -42,6 +47,11 @@ public class HomeActivity extends AppCompatActivity
 
 
     public static House myhouse;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
 
     @Override
@@ -56,11 +66,11 @@ public class HomeActivity extends AppCompatActivity
         LightsOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for(int i = 0; i < myhouse.getRooms().size(); i++) {
+                for (int i = 0; i < myhouse.getRooms().size(); i++) {
                     myhouse.getRooms().get(i).setLightStatus(true);
                     myhouse.getRooms().get(i).updateRoom();
                 }
-                Toast.makeText(HomeActivity.this, R.string.allLightsOn,  Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, R.string.allLightsOn, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -68,11 +78,11 @@ public class HomeActivity extends AppCompatActivity
         LightsOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for(int i = 0; i < myhouse.getRooms().size(); i++) {
+                for (int i = 0; i < myhouse.getRooms().size(); i++) {
                     myhouse.getRooms().get(i).setLightStatus(false);
                     myhouse.getRooms().get(i).updateRoom();
                 }
-                Toast.makeText(HomeActivity.this, R.string.allLightsOff,  Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, R.string.allLightsOff, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -96,10 +106,9 @@ public class HomeActivity extends AppCompatActivity
         new GetHouse().execute();
 
 
-
-
-
-
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @Override
@@ -149,7 +158,7 @@ public class HomeActivity extends AppCompatActivity
 
             startActivity(intent);
 
-        //} else if (id == R.id.nav_stats) {
+            //} else if (id == R.id.nav_stats) {
 
         } else if (id == R.id.nav_settings) {
             Intent i = new Intent(this, MyPreferencesActivity.class);
@@ -162,6 +171,42 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    public Action getIndexApiAction() {
+        Thing object = new Thing.Builder()
+                .setName("Home Page") // TODO: Define a title for the content shown.
+                // TODO: Make sure this auto-generated URL is correct.
+                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+                .build();
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+        client.disconnect();
     }
 
 
@@ -201,22 +246,19 @@ public class HomeActivity extends AppCompatActivity
                         boolean gas, lightStatus, lightSchedule;
                         if (c.getInt("GAS") == 1) {
                             gas = true;
-                        }
-                        else {
+                        } else {
                             gas = false;
                         }
 
                         if (c.getInt("LIGHT_STATUS") == 1) {
                             lightStatus = true;
-                        }
-                        else {
+                        } else {
                             lightStatus = false;
                         }
 
                         if (c.getInt("LIGHT_SCHEDULE") == 1) {
                             lightSchedule = true;
-                        }
-                        else {
+                        } else {
                             lightSchedule = false;
                         }
                         double temp = c.getDouble("TEMPERATURE");
@@ -295,11 +337,10 @@ public class HomeActivity extends AppCompatActivity
             for (int i = 0; i < myhouse.getRooms().size(); i++) {
                 String name = myhouse.getRooms().get(i).getName();
                 MenuItem item;
-                if(i == 0) {
+                if (i == 0) {
                     item = navigationView.getMenu().findItem(R.id.nav_1);
                     item.setTitle(name);
-                }
-                else {
+                } else {
                     item = navigationView.getMenu().add(name);
                 }
                 Intent intent = new Intent(HomeActivity.this, RoomActivity.class);
@@ -307,18 +348,15 @@ public class HomeActivity extends AppCompatActivity
                 item.setIntent(intent);
 
 
-                if(name.toLowerCase().contains("kitchen")) {
+                if (name.toLowerCase().contains("kitchen")) {
                     item.setIcon(R.drawable.ic_kitchen_black_48dp);
-                }
-                else if (name.toLowerCase().contains("bedroom")) {
+                } else if (name.toLowerCase().contains("bedroom")) {
                     item.setIcon(R.drawable.ic_hotel_black_48dp);
-                }
-                else if (name.toLowerCase().contains("living")) {
+                } else if (name.toLowerCase().contains("living")) {
                     item.setIcon(R.drawable.ic_weekend_black_48dp);
                 }
                 //item.setVisible(true);
             }
-
 
         }
     }
