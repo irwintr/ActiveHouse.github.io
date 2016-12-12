@@ -53,6 +53,17 @@
     <string name="close_body">Are you sure you want to close this activity?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="rename_room">Rename Room</string>
+    <string name="room_name_updated">Room name updated</string>
+    <string name="cancel">Cancel</string>
+    <string name="urn">Update Room Name</string>
+    <string name="renameMessage">Please enter new room name</string>
+    <string name="ok">Ok</string>
+    <string name="renameError">Error updating room name</string>
+    <string name="the">"The "</string>
+    <string name="house">" House"</string>
+    <string name="user">"User: "</string>
+    <string name="refresh">Refresh</string>
 
 
 </resources>

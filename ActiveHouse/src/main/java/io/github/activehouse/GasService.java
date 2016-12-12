@@ -117,6 +117,7 @@ public class GasService extends Service {
                                 // Add as notification
                                 NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                                 manager.notify(0, builder.build());
+                                HomeActivity.myhouse.getRoom(Integer.valueOf(RoomID)).setGas(true);
 
                             }
 

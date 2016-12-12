@@ -54,6 +54,8 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getIntent().setAction("Already created");
+
 
         LinearLayout LightsOn = (LinearLayout) findViewById(R.id.linearLayoutOn);
         LightsOn.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +89,12 @@ public class HomeActivity extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerLayout = navigationView.getHeaderView(0); // 0-index header
+
+        TextView housename = (TextView) headerLayout.findViewById(R.id.tvHouseName);
+        housename.setText(getString(R.string.the) + MainActivity.LastName + getString(R.string.house));
+        TextView usern = (TextView) headerLayout.findViewById(R.id.textViewUser);
+        usern.setText(getString(R.string.user) + MainActivity.FirstName);
 
 
         //DB Code
@@ -136,6 +144,16 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     protected void onResume() {
+        String action = getIntent().getAction();
+        // Prevent endless loop by adding a unique action, don't restart if action is present
+        if(action == null || !action.equals("Already created")) {
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        // Remove the unique action so the next time onResume is called it will restart
+        else
+            getIntent().setAction(null);
 
         super.onResume();
     }
@@ -157,6 +175,12 @@ public class HomeActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
             Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+        else if (id == R.id.action_refresh) {
+            Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
             startActivity(intent);
             finish();
             return true;
@@ -343,6 +367,19 @@ public class HomeActivity extends AppCompatActivity
                 }
                 else if (name.toLowerCase().contains("living")) {
                     item.setIcon(R.drawable.ic_weekend_black_48dp);
+                }
+                else if (name.toLowerCase().contains("garage")) {
+                    item.setIcon(R.drawable.ic_garage_black_48dp);
+                }
+                else if (name.toLowerCase().contains("dining")) {
+                    item.setIcon(R.drawable.ic_silverware_black_48dp);
+                }
+                else if (name.toLowerCase().contains("bath") || name.toLowerCase().contains("wash")) {
+                    item.setIcon(R.drawable.ic_human_male_female_black_48dp);
+                }
+                else {
+                    item.setIcon(R.drawable.ic_home_outline_black_48dp);
+
                 }
                 //item.setVisible(true);
             }

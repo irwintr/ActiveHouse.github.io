@@ -53,15 +53,14 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="24°c"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewTemp"
                         android:layout_weight="2"
-                        android:textSize="36dip"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical" />
+                        android:gravity="center_vertical"
+                        android:textSize="34dip" />
                 </LinearLayout>
 
                 <TextView
@@ -100,7 +99,6 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="32%"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewHumidity"
@@ -159,7 +157,6 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="156lx"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewBrightness"
@@ -206,7 +203,6 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="Negative"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewGas"
@@ -265,7 +261,6 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="On"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewLightStatus"
@@ -312,7 +307,6 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="On"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewLightSchedule"
@@ -373,7 +367,6 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="12:30am"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewLights"
@@ -420,7 +413,6 @@
                         app:srcCompat="@drawable/lightbulb" />
 
                     <TextView
-                        android:text="12:56pm"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewLightsOff"

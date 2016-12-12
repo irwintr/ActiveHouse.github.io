@@ -24,13 +24,11 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:id="@+id/tvHouseName"
-        android:text="The Irwin House"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:id="@+id/textViewUser"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User: Trenton" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

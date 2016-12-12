@@ -61,7 +61,6 @@ android:background="@color/colorTextDark"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
                         android:gravity="center_vertical"
-                        android:text="24°c"
                         android:textSize="38dip" />
                 </LinearLayout>
 
@@ -102,7 +101,6 @@ android:background="@color/colorTextDark"
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="36%"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewHumidity"
@@ -169,7 +167,6 @@ android:background="@color/colorTextDark"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
                         android:gravity="center_vertical"
-                        android:text="15kWh"
                         android:textSize="32dip" />
                 </LinearLayout>
 
@@ -217,7 +214,6 @@ android:background="@color/colorTextDark"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
                         android:gravity="center_vertical"
-                        android:text="36kWh"
                         android:textSize="32dip" />
                 </LinearLayout>
 
@@ -277,8 +273,7 @@ android:background="@color/colorTextDark"
                         android:textSize="40dip"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical"
-                        android:text="84L" />
+                        android:gravity="center_vertical" />
                 </LinearLayout>
 
                 <TextView
@@ -325,8 +320,7 @@ android:background="@color/colorTextDark"
                         android:textSize="40dip"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical"
-                        android:text="126L" />
+                        android:gravity="center_vertical" />
                 </LinearLayout>
 
                 <TextView
@@ -387,8 +381,7 @@ android:background="@color/colorTextDark"
                         android:textSize="48dip"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical"
-                        android:text="2" />
+                        android:gravity="center_vertical" />
                 </LinearLayout>
 
                 <TextView

@@ -3,7 +3,9 @@
 
 package io.github.activehouse;
 
+import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -52,16 +55,17 @@ public class RoomActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerLayout = navigationView.getHeaderView(0); // 0-index header
+
+        TextView housename = (TextView) headerLayout.findViewById(R.id.tvHouseName);
+        housename.setText(getString(R.string.the) + MainActivity.LastName + getString(R.string.house));
+        TextView usern = (TextView) headerLayout.findViewById(R.id.textViewUser);
+        usern.setText(getString(R.string.user) + MainActivity.FirstName);
+
         navigationView.setNavigationItemSelectedListener(this);
-
-
-        //TextView housename = (TextView) findViewById(R.id.tvHouseName);
-        //String hn = (HomeActivity.myhouse.getHouseName());
-        //housename.setText(HomeActivity.myhouse.getHouseName());
-        //TextView usern = (TextView) findViewById(R.id.textViewUser);
-        //usern.setText("User: " + MainActivity.FirstName);
-
 
         for (int i = 0; i < HomeActivity.myhouse.getRooms().size(); i++) {
             String name = HomeActivity.myhouse.getRooms().get(i).getName();
@@ -87,13 +91,28 @@ public class RoomActivity extends AppCompatActivity
             else if (name.toLowerCase().contains("living")) {
                 item.setIcon(R.drawable.ic_weekend_black_48dp);
             }
-            //item.setVisible(true);
+            else if (name.toLowerCase().contains("garage")) {
+                item.setIcon(R.drawable.ic_garage_black_48dp);
+            }
+            else if (name.toLowerCase().contains("dining")) {
+                item.setIcon(R.drawable.ic_silverware_black_48dp);
+            }
+            else if (name.toLowerCase().contains("bath") || name.toLowerCase().contains("wash")) {
+                item.setIcon(R.drawable.ic_human_male_female_black_48dp);
+            }
+            else {
+                item.setIcon(R.drawable.ic_home_outline_black_48dp);
+
+            }
         }
+
+
+
 
 
         Intent i = getIntent();
         RoomID = i.getIntExtra("ROOMID", 0);
-        getSupportActionBar().setTitle(HomeActivity.myhouse.getRoom(RoomID).getName());
+
 
         updateLayout();
 
@@ -203,6 +222,12 @@ public class RoomActivity extends AppCompatActivity
     }
 
     public void updateLayout() {
+
+        getSupportActionBar().setTitle(HomeActivity.myhouse.getRoom(RoomID).getName());
+
+
+
+
         TextView Temp = (TextView) findViewById(R.id.textViewTemp);
         TextView Humidity = (TextView) findViewById(R.id.textViewHumidity);
         TextView Brightness = (TextView) findViewById(R.id.textViewBrightness);
@@ -226,12 +251,15 @@ public class RoomActivity extends AppCompatActivity
         else {
             LightStatus.setText(R.string.off);
         }
+
+        TableRow tbr = (TableRow) findViewById(R.id.tableRow4);
         if (HomeActivity.myhouse.getRoom(RoomID).isLightSchedule()) {
             LightSchedule.setText(R.string.on);
+            tbr.setVisibility(View.VISIBLE);
         }
         else {
             LightSchedule.setText(R.string.off);
-            TableRow tbr = (TableRow) findViewById(R.id.tableRow4);
+
             tbr.setVisibility(View.GONE);
         }
 
@@ -289,7 +317,7 @@ public class RoomActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
+        getMenuInflater().inflate(R.menu.room, menu);
         return true;
     }
 
@@ -307,6 +335,73 @@ public class RoomActivity extends AppCompatActivity
             finish();
             super.finish();
             return true;
+        }
+        else if (id == R.id.action_rename) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+            alert.setTitle(R.string.urn);
+            alert.setMessage(R.string.renameMessage);
+
+            // Set an EditText view to get user input
+            final EditText input = new EditText(this);
+            alert.setView(input);
+
+            alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+
+                    // Do something with value!
+                    if (!input.getText().toString().isEmpty()) {
+                        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+                        for (int i = 0; i < navigationView.getMenu().size(); i++) {
+                            if (navigationView.getMenu().getItem(i).getTitle().toString() == HomeActivity.myhouse.getRoom(RoomID).getName()) {
+                                navigationView.getMenu().getItem(i).setTitle(input.getText());
+
+                                if(input.getText().toString().toLowerCase().contains("kitchen")) {
+                                    navigationView.getMenu().getItem(i).setIcon(R.drawable.ic_kitchen_black_48dp);
+                                }
+                                else if (input.getText().toString().toLowerCase().contains("bedroom")) {
+                                    navigationView.getMenu().getItem(i).setIcon(R.drawable.ic_hotel_black_48dp);
+                                }
+                                else if (input.getText().toString().toLowerCase().contains("living")) {
+                                    navigationView.getMenu().getItem(i).setIcon(R.drawable.ic_weekend_black_48dp);
+                                }
+                                else if (input.getText().toString().toLowerCase().contains("garage")) {
+                                    navigationView.getMenu().getItem(i).setIcon(R.drawable.ic_garage_black_48dp);
+                                }
+                                else if (input.getText().toString().toLowerCase().contains("dining")) {
+                                    navigationView.getMenu().getItem(i).setIcon(R.drawable.ic_silverware_black_48dp);
+                                }
+                                else if (input.getText().toString().toLowerCase().contains("bath") || input.getText().toString().toLowerCase().contains("wash")) {
+                                    navigationView.getMenu().getItem(i).setIcon(R.drawable.ic_human_male_female_black_48dp);
+                                }
+                                else {
+                                    navigationView.getMenu().getItem(i).setIcon(R.drawable.ic_home_outline_black_48dp);
+
+                                }
+
+                            }
+                        }
+                        HomeActivity.myhouse.getRoom(RoomID).setName(input.getText().toString());
+                        HomeActivity.myhouse.getRoom(RoomID).updateRoom();
+                        updateLayout();
+
+
+                        Toast.makeText(RoomActivity.this, R.string.room_name_updated,  Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(RoomActivity.this, R.string.renameError,  Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    // Canceled.
+                }
+            });
+
+            alert.show();
         }
 
         return super.onOptionsItemSelected(item);

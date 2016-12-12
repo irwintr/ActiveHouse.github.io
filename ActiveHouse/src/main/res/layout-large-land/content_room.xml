@@ -34,7 +34,7 @@
                 android:layout_height="100dip"
                 android:layout_width="match_parent"
                 android:layout_marginRight="60dip"
-                android:layout_marginLeft="60dip">
+                android:layout_marginLeft="120dip">
 
 
                 <LinearLayout
@@ -54,7 +54,6 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="24°c"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewTemp"
@@ -82,7 +81,7 @@
                 android:layout_height="100dip"
                 android:layout_width="match_parent"
                 android:layout_marginLeft="60dip"
-                android:layout_marginRight="60dip">
+                android:layout_marginRight="120dip">
 
 
                 <LinearLayout
@@ -102,7 +101,6 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="32%"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewHumidity"
@@ -142,7 +140,7 @@
                 android:layout_height="100dip"
                 android:layout_width="match_parent"
                 android:layout_marginRight="60dip"
-                android:layout_marginLeft="60dip">
+                android:layout_marginLeft="120dip">
 
 
                 <LinearLayout
@@ -162,7 +160,6 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="156lx"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewBrightness"
@@ -189,7 +186,7 @@
                 android:layout_weight="1"
                 android:layout_height="100dip"
                 android:layout_width="match_parent"
-                android:layout_marginRight="60dip"
+                android:layout_marginRight="120dip"
                 android:layout_marginLeft="60dip">
 
 
@@ -210,7 +207,6 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="Negative"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewGas"
@@ -250,7 +246,7 @@
                 android:layout_height="100dip"
                 android:layout_width="match_parent"
                 android:layout_marginRight="60dip"
-                android:layout_marginLeft="60dip">
+                android:layout_marginLeft="120dip">
 
 
                 <LinearLayout
@@ -270,7 +266,6 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="On"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewLightStatus"
@@ -297,7 +292,7 @@
                 android:layout_weight="1"
                 android:layout_height="100dip"
                 android:layout_width="match_parent"
-                android:layout_marginRight="60dip"
+                android:layout_marginRight="120dip"
                 android:layout_marginLeft="60dip">
 
 
@@ -318,7 +313,6 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="On"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewLightSchedule"
@@ -360,7 +354,7 @@
                 android:layout_height="100dip"
                 android:layout_width="match_parent"
                 android:layout_marginRight="60dip"
-                android:layout_marginLeft="60dip">
+                android:layout_marginLeft="120dip">
 
 
                 <LinearLayout
@@ -380,7 +374,6 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="12:30am"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewLights"
@@ -407,7 +400,7 @@
                 android:layout_weight="1"
                 android:layout_height="100dip"
                 android:layout_width="match_parent"
-                android:layout_marginRight="60dip"
+                android:layout_marginRight="120dip"
                 android:layout_marginLeft="60dip">
 
 
@@ -428,7 +421,6 @@
                         app:srcCompat="@drawable/lightbulb" />
 
                     <TextView
-                        android:text="12:56pm"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewLightsOff"

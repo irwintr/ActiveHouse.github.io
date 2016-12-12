@@ -59,10 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
         String savedUsername = sharedPref.getString("username", "");
-        String savedPassword = sharedPref.getString("password", "");
-        if (!savedUsername.equals("") && !savedPassword.equals("")) {
+        if (!savedUsername.equals("")) {
             etUsername.setText(savedUsername);
-            etPassword.setText(savedPassword);
             cbSave.setChecked(true);
         }
 
@@ -86,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                         SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPref.edit();
                         editor.putString("username", etUsername.getText().toString());
-                        editor.putString("password", etPassword.getText().toString());
                         editor.apply();
 
 
@@ -95,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                         SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPref.edit();
                         editor.putString("username", "");
-                        editor.putString("password", "");
                         editor.apply();
                     }
 
