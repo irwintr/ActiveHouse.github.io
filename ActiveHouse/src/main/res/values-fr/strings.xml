@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Active House</string>
+    <string name="home">Accueil</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="allLightsOff">Toutes les lumières ont été éteintes</string>
+    <string name="allLightsOn">Toutes les lumières ont été allumées</string>
+    <string name="jsonError">Erreur d\'analyse de Json:</string>
+    <string name="jsonError2">Impossible d\'obtenir json du serveur.</string>
+    <string name="jsonError3">Impossible d\'obtenir json du serveur. Consultez LogCat pour connaître les éventuelles erreurs!</string>
+    <string name="lightOff">Lumière éteinte</string>
+    <string name="lightOn">Lumière allumée</string>
+    <string name="lightScheduleOff">Calendrier lumineux désactivé</string>
+    <string name="lightScheduleOn">Calendrier lumineux activé</string>
+    <string name="login">S\'identifier</string>
+    <string name="logout">Se déconnecter</string>
+    <string name="navigation_drawer_close">Fermer le tiroir de navigation</string>
+    <string name="navigation_drawer_open">Ouvrir le tiroir de navigation</string>
+    <string name="negative">Négatif</string>
+    <string name="off">De</string>
+    <string name="on">Sur</string>
+    <string name="password">Mot de passe</string>
+    <string name="positive">Positif</string>
+    <string name="responseLog">\"Réponse de url:\"</string>
+    <string name="rooms">Pièces</string>
+    <string name="saveLogin">Enregistrer mon login</string>
+    <string name="server_address_get_rooms"></string>
+    <string name="settings">Paramètres</string>
+    <string name="statistics">Statistiques</string>
+    <string name="title_activity_home">Accueil</string>
+    <string name="title_activity_settings">Paramètres</string>
+    <string name="username">Nom d\'utilisateur</string>
+    <string name="viewRooms">Voir les chambres</string>
+    <string name="view_all_rooms">Voir toutes les chambres</string>
+</resources>
