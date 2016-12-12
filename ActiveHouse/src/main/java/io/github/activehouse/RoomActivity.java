@@ -132,6 +132,7 @@ public class RoomActivity extends AppCompatActivity
     }
 
     public void updateLayout() {
+        boolean tempCheck = false;
         loadPreferences();
         TextView Temp = (TextView) findViewById(R.id.textViewTemp);
         TextView Humidity = (TextView) findViewById(R.id.textViewHumidity);
@@ -141,7 +142,11 @@ public class RoomActivity extends AppCompatActivity
         TextView LightSchedule = (TextView) findViewById(R.id.textViewLightSchedule);
         TextView On = (TextView) findViewById(R.id.textViewLights);
         TextView Off = (TextView) findViewById(R.id.textViewLights);
-        Temp.setText(String.valueOf(HomeActivity.myhouse.getRoom(RoomID).getTemp()) + "°c");
+        if (tempCheck == false) {
+            Temp.setText(String.valueOf(HomeActivity.myhouse.getRoom(RoomID).getTemp()) + "°c");
+        } else {
+            Temp.setText(String.valueOf(HomeActivity.myhouse.getRoom(RoomID).getTemp() * 9/5 + 32) + "°f");
+        }
         Humidity.setText(String.valueOf(HomeActivity.myhouse.getRoom(RoomID).getHumidity()) + "%");
         Brightness.setText(String.valueOf((int) HomeActivity.myhouse.getRoom(RoomID).getLuminosity()) + "lx");
         if (HomeActivity.myhouse.getRoom(RoomID).getGas()) {
@@ -217,7 +222,8 @@ public class RoomActivity extends AppCompatActivity
             startActivity(intent);
        // } else if (id == R.id.nav_stats) {
 
-        //} else if (id == R.id.nav_settings) {
+        } else if (id == R.id.nav_settings) {
+            Intent intent = new Intent(this, MyPreferencesActivity.class);
 
         }  else {
             startActivity(item.getIntent());
