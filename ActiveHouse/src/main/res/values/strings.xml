@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Active House</string>
-    <string name="server_address_get_rooms">http://munro.humber.ca/~n01046059/ActiveHouse/get_rooms.php</string>
-    <string name="server_address_login">http://munro.humber.ca/~n01046059/ActiveHouse/login.php</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
@@ -64,6 +62,15 @@
     <string name="house">" House"</string>
     <string name="user">"User: "</string>
     <string name="refresh">Refresh</string>
+    <string name="register">Register</string>
+    <string name="house_id">House ID</string>
+    <string name="email">Email</string>
+    <string name="register_a_new_active_house">Register a new Active House</string>
+    <string name="errorLoggingIn">Error Logging in, check Username and Password</string>
+    <string name="errorRegistering">Error registering, make sure all fields are filled out</string>
+    <string name="invalid_houseid">Invalid House ID</string>
+    <string name="regSuccess">Account created, please login now</string>
+    <string name="ERRORLOGGINGIN">Error Logging in, please enter Username and Password</string>
 
 
 </resources>

@@ -61,4 +61,14 @@
     <string name="urn">Mettre à jour le nom de la chambre</string>
     <string name="user">\"Utilisateur: \"</string>
     <string name="yes">Oui</string>
+    <string name="ERRORLOGGINGIN">Erreur Connexion, veuillez entrer votre nom d\'utilisateur et votre mot de passe</string>
+    <string name="email">Email</string>
+    <string name="errorLoggingIn">Erreur lors de la connexion, cochez Nom d\'utilisateur et Mot de passe</string>
+    <string name="errorRegistering">Erreur lors de l\'enregistrement, vérifiez que tous les champs sont remplis</string>
+    <string name="house_id">ID de maison</string>
+    <string name="invalid_houseid">ID de maison non valide</string>
+    <string name="regSuccess">Compte créé, veuillez vous connecter maintenant</string>
+    <string name="register">Registre</string>
+    <string name="register_a_new_active_house">Enregistrer une nouvelle maison active</string>
+    <string name="title_activity_room">RoomActivity</string>
 </resources>

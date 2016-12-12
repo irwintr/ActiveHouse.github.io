@@ -7,8 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Process;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -23,13 +21,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,6 +58,8 @@ public class HomeActivity extends AppCompatActivity
                     myhouse.getRooms().get(i).setLightStatus(true);
                     myhouse.getRooms().get(i).updateRoom();
                 }
+                TextView Lights = (TextView) findViewById(R.id.textViewLights);
+                Lights.setText(String.valueOf(myhouse.getRooms().size()));
                 Toast.makeText(HomeActivity.this, R.string.allLightsOn,  Toast.LENGTH_SHORT).show();
             }
         });
@@ -77,6 +72,8 @@ public class HomeActivity extends AppCompatActivity
                     myhouse.getRooms().get(i).setLightStatus(false);
                     myhouse.getRooms().get(i).updateRoom();
                 }
+                TextView Lights = (TextView) findViewById(R.id.textViewLights);
+                Lights.setText("0");
                 Toast.makeText(HomeActivity.this, R.string.allLightsOff,  Toast.LENGTH_SHORT).show();
             }
         });
@@ -132,7 +129,8 @@ public class HomeActivity extends AppCompatActivity
                     {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Process.killProcess(Process.myPid());
+
+                            HomeActivity.this.finishAffinity();
 
                         }
 

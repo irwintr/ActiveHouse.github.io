@@ -38,7 +38,12 @@
         <service
             android:name=".GasService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".RegisterActivity"
+            android:label="@string/register"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/appThemeDark" />
     </application>
 
 </manifest>

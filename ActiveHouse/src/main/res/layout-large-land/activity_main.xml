@@ -65,5 +65,12 @@ android:fitsSystemWindows="true"
         android:textSize="18sp"
         android:textColor="@color/colorTextDark" />
 
+    <TextView
+        android:text="@string/register_a_new_active_house"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewRegister"
+        android:textAlignment="center" />
+
 </LinearLayout>
 </ScrollView>

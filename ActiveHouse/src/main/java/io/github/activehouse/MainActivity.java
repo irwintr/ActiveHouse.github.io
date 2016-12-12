@@ -3,7 +3,6 @@
 
 package io.github.activehouse;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,7 +13,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -97,9 +95,20 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 else {
-                    Toast.makeText(MainActivity.this,"Error Logging in, please enter Username and Password",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.ERRORLOGGINGIN,Toast.LENGTH_SHORT).show();
 
                 }
+
+            }
+        });
+
+        TextView tvRegister = (TextView) findViewById(R.id.textViewRegister);
+        tvRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -116,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Process.killProcess(Process.myPid());
+                            MainActivity.this.finishAffinity();
 
                         }
 
@@ -169,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(getApplicationContext(), "Error Logging in, check Username and Password",Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), R.string.errorLoggingIn,Toast.LENGTH_LONG).show();
                             }
                         });
                     }
@@ -183,12 +192,12 @@ public class MainActivity extends AppCompatActivity {
 
 
                 } catch (final JSONException e) {
-                    Log.e(TAG, "Json parsing error: " + e.getMessage());
+                    Log.e(TAG, R.string.jsonError + e.getMessage());
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText(getApplicationContext(),
-                                    "Json parsing error: " + e.getMessage(),
+                                    R.string.jsonError + e.getMessage(),
                                     Toast.LENGTH_LONG).show();
                         }
                     });
@@ -201,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(getApplicationContext(),
-                                "Couldn't get json from server. Check LogCat for possible errors!",
+                                R.string.jsonError3,
                                 Toast.LENGTH_LONG).show();
                     }
                 });
