@@ -3,10 +3,13 @@
 
 package io.github.activehouse;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Process;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -112,8 +115,29 @@ public class HomeActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle(R.string.closing_activity)
+                    .setMessage(R.string.close_body)
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Process.killProcess(Process.myPid());
+
+                        }
+
+                    })
+                    .setNegativeButton(R.string.no, null)
+                    .show();
         }
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
     }
 
     @Override
@@ -132,6 +156,8 @@ public class HomeActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
+            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+            startActivity(intent);
             finish();
             return true;
         }

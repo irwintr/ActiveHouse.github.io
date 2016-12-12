@@ -5,9 +5,12 @@ package io.github.activehouse;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Process;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,11 +46,10 @@ public class MainActivity extends AppCompatActivity {
     public static int HouseID;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
 
         setContentView(R.layout.activity_main);
 
@@ -107,6 +109,27 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle(R.string.closing_activity)
+                    .setMessage(R.string.close_body)
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Process.killProcess(Process.myPid());
+
+                        }
+
+                    })
+                    .setNegativeButton(R.string.no, null)
+                    .show();
+
+    }
+
     private class GetLogin extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
@@ -143,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                         startActivity(intent);
-                        finish();
+
 
                     }
                     else {

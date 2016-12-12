@@ -49,6 +49,10 @@
     <string name="light_schedule_toggle">Light Schedule Toggle</string>
     <string name="lights_time_on">Lights Time On</string>
     <string name="lights_time_off">Lights Time Off</string>
+    <string name="closing_activity">Closing Activity</string>
+    <string name="close_body">Are you sure you want to close this activity?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 
 </resources>
