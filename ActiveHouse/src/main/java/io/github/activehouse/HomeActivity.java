@@ -1,9 +1,13 @@
+//Active Applications
+//Active House Project
+
 package io.github.activehouse;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.os.Process;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,13 +21,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,11 +47,19 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getIntent().setAction("Already created");
+
 
         LinearLayout LightsOn = (LinearLayout) findViewById(R.id.linearLayoutOn);
         LightsOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                for(int i = 0; i < myhouse.getRooms().size(); i++) {
+                    myhouse.getRooms().get(i).setLightStatus(true);
+                    myhouse.getRooms().get(i).updateRoom();
+                }
+                TextView Lights = (TextView) findViewById(R.id.textViewLights);
+                Lights.setText(String.valueOf(myhouse.getRooms().size()));
                 Toast.makeText(HomeActivity.this, R.string.allLightsOn,  Toast.LENGTH_SHORT).show();
             }
         });
@@ -61,6 +68,12 @@ public class HomeActivity extends AppCompatActivity
         LightsOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                for(int i = 0; i < myhouse.getRooms().size(); i++) {
+                    myhouse.getRooms().get(i).setLightStatus(false);
+                    myhouse.getRooms().get(i).updateRoom();
+                }
+                TextView Lights = (TextView) findViewById(R.id.textViewLights);
+                Lights.setText("0");
                 Toast.makeText(HomeActivity.this, R.string.allLightsOff,  Toast.LENGTH_SHORT).show();
             }
         });
@@ -73,6 +86,12 @@ public class HomeActivity extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerLayout = navigationView.getHeaderView(0); // 0-index header
+
+        TextView housename = (TextView) headerLayout.findViewById(R.id.tvHouseName);
+        housename.setText(getString(R.string.the) + MainActivity.LastName + getString(R.string.house));
+        TextView usern = (TextView) headerLayout.findViewById(R.id.textViewUser);
+        usern.setText(getString(R.string.user) + MainActivity.FirstName);
 
 
         //DB Code
@@ -83,6 +102,10 @@ public class HomeActivity extends AppCompatActivity
         //lv = (ListView) findViewById(R.id.list);
 
         new GetHouse().execute();
+
+        Intent intent = new Intent(this, GasService.class);
+        intent.putExtra("HouseID", MainActivity.HouseID);
+        startService(intent);
 
 
 
@@ -97,8 +120,40 @@ public class HomeActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle(R.string.closing_activity)
+                    .setMessage(R.string.close_body)
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            HomeActivity.this.finishAffinity();
+
+                        }
+
+                    })
+                    .setNegativeButton(R.string.no, null)
+                    .show();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        String action = getIntent().getAction();
+        // Prevent endless loop by adding a unique action, don't restart if action is present
+        if(action == null || !action.equals("Already created")) {
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        // Remove the unique action so the next time onResume is called it will restart
+        else
+            getIntent().setAction(null);
+
+        super.onResume();
     }
 
     @Override
@@ -117,6 +172,14 @@ public class HomeActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
+            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+        else if (id == R.id.action_refresh) {
+            Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+            startActivity(intent);
             finish();
             return true;
         }
@@ -152,7 +215,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
 
-    private class GetHouse extends AsyncTask<Void, Void, Void> {
+    public class GetHouse extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -302,6 +365,19 @@ public class HomeActivity extends AppCompatActivity
                 }
                 else if (name.toLowerCase().contains("living")) {
                     item.setIcon(R.drawable.ic_weekend_black_48dp);
+                }
+                else if (name.toLowerCase().contains("garage")) {
+                    item.setIcon(R.drawable.ic_garage_black_48dp);
+                }
+                else if (name.toLowerCase().contains("dining")) {
+                    item.setIcon(R.drawable.ic_silverware_black_48dp);
+                }
+                else if (name.toLowerCase().contains("bath") || name.toLowerCase().contains("wash")) {
+                    item.setIcon(R.drawable.ic_human_male_female_black_48dp);
+                }
+                else {
+                    item.setIcon(R.drawable.ic_home_outline_black_48dp);
+
                 }
                 //item.setVisible(true);
             }

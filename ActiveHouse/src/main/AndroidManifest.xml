@@ -10,7 +10,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/appThemeDark">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,15 +22,28 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".RoomViewActivity"
+        <activity
+            android:name=".RoomViewActivity"
             android:label="@string/view_all_rooms"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".HomeActivity"></activity>
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RoomActivity"
             android:label="@string/title_activity_room"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <service
+            android:name=".GasService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".RegisterActivity"
+            android:label="@string/register"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/appThemeDark" />
     </application>
 
 </manifest>

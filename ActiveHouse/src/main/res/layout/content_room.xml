@@ -53,19 +53,18 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="24°c"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewTemp"
                         android:layout_weight="2"
-                        android:textSize="30sp"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical" />
+                        android:gravity="center_vertical"
+                        android:textSize="34dip" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Temperature"
+                    android:text="@string/temperature"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView2"
@@ -100,19 +99,18 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="32%"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewHumidity"
                         android:layout_weight="2"
-                        android:textSize="32sp"
+                        android:textSize="36dip"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
                         android:gravity="center_vertical" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Humidity"
+                    android:text="@string/humidity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView1"
@@ -159,19 +157,18 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="156lx"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewBrightness"
                         android:layout_weight="2"
-                        android:textSize="32sp"
+                        android:textSize="32dip"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
                         android:gravity="center_vertical" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Brightness"
+                    android:text="@string/brightness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView3"
@@ -206,19 +203,18 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="Negative"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewGas"
                         android:layout_weight="2"
-                        android:textSize="24sp"
+                        android:textSize="24dip"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
                         android:gravity="center_vertical" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Gas Alert"
+                    android:text="@string/gas_alert"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView5"
@@ -240,7 +236,7 @@
 
             <LinearLayout
                 android:background="@drawable/layout_bg"
-                android:id="@+id/linearLayout5"
+                android:id="@+id/lightStatusToggle"
                 android:orientation="vertical"
                 android:layout_weight="1"
                 android:layout_height="100dip"
@@ -265,19 +261,18 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="On"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewLightStatus"
                         android:layout_weight="2"
-                        android:textSize="48sp"
+                        android:textSize="48dip"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
                         android:gravity="center_vertical" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Light Status Toggle"
+                    android:text="@string/light_status_toggle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView6"
@@ -287,7 +282,7 @@
 
             <LinearLayout
                 android:background="@drawable/layout_bg"
-                android:id="@+id/linearLayout6"
+                android:id="@+id/lightScheduleToggle"
                 android:orientation="vertical"
                 android:layout_weight="1"
                 android:layout_height="100dip"
@@ -312,19 +307,18 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="On"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewLightSchedule"
                         android:layout_weight="2"
-                        android:textSize="48sp"
+                        android:textSize="48dip"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
                         android:gravity="center_vertical" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Light Schedule Toggle"
+                    android:text="@string/light_schedule_toggle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView7"
@@ -373,19 +367,18 @@
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text="12:30am"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewLights"
                         android:layout_weight="2"
-                        android:textSize="24sp"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical" />
+                        android:gravity="center_vertical"
+                        android:textSize="24dip" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Lights Time On"
+                    android:text="@string/lights_time_on"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView8"
@@ -420,19 +413,18 @@
                         app:srcCompat="@drawable/lightbulb" />
 
                     <TextView
-                        android:text="12:56pm"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewLightsOff"
                         android:layout_weight="2"
-                        android:textSize="22sp"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical" />
+                        android:gravity="center_vertical"
+                        android:textSize="24dip" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Lights Time Off"
+                    android:text="@string/lights_time_off"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView9"
