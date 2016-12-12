@@ -39,12 +39,12 @@ public class HouseTest {
 
 
     @Test
-    public double setPowerCurrentTest(double powerCurrent) throws Exception {
+    public void setPowerCurrentTest(double powerCurrent) throws Exception {
         this.powerCurrent = powerCurrent;
-        if(powerCurrent == 15)
-        {
-            return powerCurrent;
-        }
+        assertEquals(15,powerCurrent);
+
+
+
 
     }
 }
