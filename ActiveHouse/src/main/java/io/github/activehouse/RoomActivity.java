@@ -3,6 +3,7 @@
 
 package io.github.activehouse;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -19,12 +20,18 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.StringTokenizer;
 
 public class RoomActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     int RoomID;
+
+    TextView On, Off;
 
 
     @Override
@@ -33,6 +40,9 @@ public class RoomActivity extends AppCompatActivity
         setContentView(R.layout.activity_room);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        On = (TextView) findViewById(R.id.textViewLights);
+        Off = (TextView) findViewById(R.id.textViewLightsOff);
 
 
 
@@ -126,6 +136,83 @@ public class RoomActivity extends AppCompatActivity
             }
         });
 
+        LinearLayout lightScheduleOn = (LinearLayout) findViewById(R.id.linearLayout7);
+        lightScheduleOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int hour = Integer.parseInt(HomeActivity.myhouse.getRoom(RoomID).getTimeOn().split("\\:")[0]);
+                int minute =Integer.parseInt(HomeActivity.myhouse.getRoom(RoomID).getTimeOn().split("\\:")[1]);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(RoomActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        String min, timeString;
+                        if (selectedMinute < 10) {
+                            min = "0" + selectedMinute;
+                        }
+                        else {
+                            min = String.valueOf(selectedMinute);
+                        }
+                        if (selectedHour == 0) {
+                            timeString =  "12:" + min + "am";
+                        } else if (selectedHour < 12) {
+                            timeString = selectedHour + ":" + min + "am";
+                        } else if (selectedHour == 12) {
+                            timeString = "12:" + min + "pm";
+                        } else {
+                            timeString = (selectedHour-12) + ":" + min +"pm";
+                        }
+                        On.setText(timeString);
+                        HomeActivity.myhouse.getRoom(RoomID).setTimeOn(selectedHour + ":" + selectedMinute);
+                        HomeActivity.myhouse.getRoom(RoomID).updateRoom();
+                    }
+                }, hour, minute, false);
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
+
+            }
+        });
+
+
+        LinearLayout lightScheduleOff = (LinearLayout) findViewById(R.id.linearLayout8);
+        lightScheduleOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int hour = Integer.parseInt(HomeActivity.myhouse.getRoom(RoomID).getTimeOn().split("\\:")[0]);
+                int minute =Integer.parseInt(HomeActivity.myhouse.getRoom(RoomID).getTimeOn().split("\\:")[1]);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(RoomActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        String min, timeString;
+                        if (selectedMinute < 10) {
+                            min = "0" + selectedMinute;
+                        }
+                        else {
+                            min = String.valueOf(selectedMinute);
+                        }
+                        if (selectedHour == 0) {
+                            timeString =  "12:" + min + "am";
+                        } else if (selectedHour < 12) {
+                            timeString = selectedHour + ":" + min + "am";
+                        } else if (selectedHour == 12) {
+                            timeString = "12:" + min + "pm";
+                        } else {
+                            timeString = (selectedHour-12) + ":" + min +"pm";
+                        }
+                        Off.setText(timeString);
+                        HomeActivity.myhouse.getRoom(RoomID).setTimeOn(selectedHour + ":" + selectedMinute);
+                        HomeActivity.myhouse.getRoom(RoomID).updateRoom();
+                    }
+                }, hour, minute, false);
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
+
+            }
+        });
+
 
 
     }
@@ -137,8 +224,7 @@ public class RoomActivity extends AppCompatActivity
         TextView Gas = (TextView) findViewById(R.id.textViewGas);
         TextView LightStatus = (TextView) findViewById(R.id.textViewLightStatus);
         TextView LightSchedule = (TextView) findViewById(R.id.textViewLightSchedule);
-        TextView On = (TextView) findViewById(R.id.textViewLights);
-        TextView Off = (TextView) findViewById(R.id.textViewLights);
+
 
         Temp.setText(String.valueOf(HomeActivity.myhouse.getRoom(RoomID).getTemp()) + "°c");
         Humidity.setText(String.valueOf(HomeActivity.myhouse.getRoom(RoomID).getHumidity()) + "%");
@@ -163,6 +249,34 @@ public class RoomActivity extends AppCompatActivity
             TableRow tbr = (TableRow) findViewById(R.id.tableRow4);
             tbr.setVisibility(View.GONE);
         }
+
+        String timeString;
+        int selectedHour = Integer.parseInt(HomeActivity.myhouse.getRoom(RoomID).getTimeOn().split("\\:")[0]);
+        int selectedMinute =Integer.parseInt(HomeActivity.myhouse.getRoom(RoomID).getTimeOn().split("\\:")[1]);
+        if (selectedHour == 0) {
+            timeString =  "12:" + selectedMinute + "am";
+        } else if (selectedHour < 12) {
+            timeString = selectedHour + ":" + selectedMinute + "am";
+        } else if (selectedHour == 12) {
+            timeString = "12:" + selectedMinute + "pm";
+        } else {
+            timeString = (selectedHour-12) + ":" + selectedMinute +"pm";
+        }
+        On.setText(timeString);
+
+        selectedHour = Integer.parseInt(HomeActivity.myhouse.getRoom(RoomID).getTimeOff().split("\\:")[0]);
+        selectedMinute =Integer.parseInt(HomeActivity.myhouse.getRoom(RoomID).getTimeOff().split("\\:")[1]);
+        if (selectedHour == 0) {
+            timeString =  "12:" + selectedMinute + "am";
+        } else if (selectedHour < 12) {
+            timeString = selectedHour + ":" + selectedMinute + "am";
+        } else if (selectedHour == 12) {
+            timeString = "12:" + selectedMinute + "pm";
+        } else {
+            timeString = (selectedHour-12) + ":" + selectedMinute +"pm";
+        }
+        Off.setText(timeString);
+
     }
 
     @Override

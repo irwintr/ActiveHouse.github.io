@@ -35,6 +35,20 @@
     <string name="lightScheduleOn">Light Schedule Turned On</string>
     <string name="lightScheduleOff">Light Schedule Turned Off</string>
     <string name="lightOff">Light turned off</string>
+    <string name="today_s_water_usage">Today\'s Water Usage</string>
+    <string name="toggle_all_lights">Toggle All Lights</string>
+    <string name="average_power_usage">Average Power Usage</string>
+    <string name="average_water_usage">Average Water Usage</string>
+    <string name="humidity">Humidity</string>
+    <string name="number_of_lights_on">Number of Lights On</string>
+    <string name="temperature">Temperature</string>
+    <string name="today_s_power_usage">Today\'s Power Usage</string>
+    <string name="brightness">Brightness</string>
+    <string name="gas_alert">Gas Alert</string>
+    <string name="light_status_toggle">Light Status Toggle</string>
+    <string name="light_schedule_toggle">Light Schedule Toggle</string>
+    <string name="lights_time_on">Lights Time On</string>
+    <string name="lights_time_off">Lights Time Off</string>
 
 
 </resources>

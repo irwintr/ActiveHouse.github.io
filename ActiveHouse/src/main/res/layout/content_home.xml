@@ -57,10 +57,11 @@ android:background="@color/colorTextDark"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewTemp"
                         android:layout_weight="2"
-                        android:textSize="32sp"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical" />
+                        android:gravity="center_vertical"
+                        android:text="24°c"
+                        android:textSize="38dip" />
                 </LinearLayout>
 
                 <TextView
@@ -99,19 +100,19 @@ android:background="@color/colorTextDark"
                         android:tint="@color/colorTextDark" />
 
                     <TextView
-                        android:text=""
+                        android:text="36%"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewHumidity"
                         android:layout_weight="2"
-                        android:textSize="32sp"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical" />
+                        android:gravity="center_vertical"
+                        android:textSize="38dip" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Humidity"
+                    android:text="@string/humidity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView1"
@@ -162,14 +163,15 @@ android:background="@color/colorTextDark"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewPowerToday"
                         android:layout_weight="2"
-                        android:textSize="26sp"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical" />
+                        android:gravity="center_vertical"
+                        android:text="15kWh"
+                        android:textSize="32dip" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Today's Power Usage"
+                    android:text="@string/today_s_power_usage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView3"
@@ -208,14 +210,15 @@ android:background="@color/colorTextDark"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewPowerAverage"
                         android:layout_weight="2"
-                        android:textSize="26sp"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical" />
+                        android:gravity="center_vertical"
+                        android:text="36kWh"
+                        android:textSize="32dip" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Average Power Usage"
+                    android:text="@string/average_power_usage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView5"
@@ -266,14 +269,15 @@ android:background="@color/colorTextDark"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewWaterToday"
                         android:layout_weight="2"
-                        android:textSize="40sp"
+                        android:textSize="40dip"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical" />
+                        android:gravity="center_vertical"
+                        android:text="84L" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Today's Water Usage"
+                    android:text="@string/today_s_water_usage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView6"
@@ -312,14 +316,15 @@ android:background="@color/colorTextDark"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewWaterAverage"
                         android:layout_weight="2"
-                        android:textSize="40sp"
+                        android:textSize="40dip"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical" />
+                        android:gravity="center_vertical"
+                        android:text="126L" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Average Water Usage"
+                    android:text="@string/average_water_usage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView7"
@@ -372,14 +377,15 @@ android:background="@color/colorTextDark"
                         android:layout_height="match_parent"
                         android:id="@+id/textViewLights"
                         android:layout_weight="2"
-                        android:textSize="48sp"
+                        android:textSize="48dip"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical" />
+                        android:gravity="center_vertical"
+                        android:text="2" />
                 </LinearLayout>
 
                 <TextView
-                    android:text="Number of Lights On"
+                    android:text="@string/number_of_lights_on"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView8"
@@ -421,7 +427,7 @@ android:background="@color/colorTextDark"
                             android:minHeight="71dp"
                             android:tint="@color/colorTextDark" />
                         <TextView
-                            android:text="On"
+                            android:text="@string/on"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/textView4"
@@ -446,7 +452,7 @@ android:background="@color/colorTextDark"
                             android:minHeight="71dp"
                             android:tint="@color/colorTextDark" />
                         <TextView
-                            android:text="Off"
+                            android:text="@string/off"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/textView"
@@ -457,7 +463,7 @@ android:background="@color/colorTextDark"
                 </LinearLayout>
 
                 <TextView
-                    android:text="Toggle All Lights"
+                    android:text="@string/toggle_all_lights"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView9"
