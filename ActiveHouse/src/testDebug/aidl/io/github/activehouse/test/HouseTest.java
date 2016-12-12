@@ -29,7 +29,7 @@ public class HouseTest {
 
     public HouseTest() {
         this.rooms = new ArrayList<Room>();
-        this.houseID = 0;
+        this.houseID = 1;
         this.houseName = "";
         this.waterCurrent = 0;
         this.waterAverage = 0;
@@ -43,8 +43,11 @@ public class HouseTest {
         this.powerCurrent = powerCurrent;
         assertEquals(15,powerCurrent);
 
+    }
 
-
-
+    @Test
+    public void setHouseID(int houseID) throws Exception
+    {
+        assertEquals(1 , houseID);
     }
 }
