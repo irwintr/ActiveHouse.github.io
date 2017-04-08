@@ -330,9 +330,9 @@ public class HomeActivity extends AppCompatActivity
 
             Temp.setText(String.valueOf(myhouse.getAverageTemp()) + "°c");
             Humidity.setText(String.valueOf(myhouse.getAverageHumidity()) + "%");
-            PowerToday.setText(String.valueOf((int) myhouse.getPowerCurrent()) + "kWh");
-            PowerAverage.setText(String.valueOf((int) myhouse.getPowerAverage()) + "kWh");
-            WaterToday.setText(String.valueOf((int) myhouse.getWaterCurrent()) + "L");
+            PowerToday.setText(String.valueOf((int) myhouse.getPowerCurrent()) + "W");
+            PowerAverage.setText(String.valueOf((int) myhouse.getPowerAverage()) + "Wh");
+            WaterToday.setText(String.valueOf((int) myhouse.getWaterCurrent()) + "L/m");
             WaterAverage.setText(String.valueOf((int) myhouse.getWaterAverage()) + "L");
             Lights.setText(String.valueOf(myhouse.getLightsOn()));
 

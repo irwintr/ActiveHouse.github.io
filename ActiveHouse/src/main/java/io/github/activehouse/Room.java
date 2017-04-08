@@ -66,6 +66,7 @@ public class Room {
             // Making a request to url and getting response
             String url = "http://munro.humber.ca/~n01046059/ActiveHouse/update_room.php?ROOM_ID=" + roomID + "&LIGHT_STATUS=" + status
                     + "&LIGHT_SCHEDULE=" + schedule + "&LIGHT_TIME_ON=" + timeOn + "&LIGHT_TIME_OFF=" + timeOff + "&ROOM_NAME=" + name;
+            url = url.replaceAll(" ", "%20");
             String jsonStr = sh.makeServiceCall(url);
 
             Log.e(Room.class.getSimpleName(), "Response from url: " + jsonStr);

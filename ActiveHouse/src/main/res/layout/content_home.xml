@@ -157,14 +157,14 @@ android:background="@color/colorTextDark"
                         android:tint="@color/colorTextDark" />
 
                     <TextView
+                        android:id="@+id/textViewPowerToday"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/textViewPowerToday"
                         android:layout_weight="2"
+                        android:gravity="center_vertical"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical"
-                        android:textSize="32dip" />
+                        android:textSize="30dip" />
                 </LinearLayout>
 
                 <TextView
@@ -261,14 +261,14 @@ android:background="@color/colorTextDark"
                         android:tint="@color/colorTextDark" />
 
                     <TextView
+                        android:id="@+id/textViewWaterToday"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/textViewWaterToday"
                         android:layout_weight="2"
-                        android:textSize="40dip"
+                        android:gravity="center_vertical"
                         android:paddingTop="5dip"
                         android:textColor="@color/colorTextDark"
-                        android:gravity="center_vertical" />
+                        android:textSize="30dip" />
                 </LinearLayout>
 
                 <TextView
